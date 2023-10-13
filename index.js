@@ -4,9 +4,15 @@ const app = express();
 const router = require("./routes/router");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 //env file configration
 dotenv.config();
+app.use(cors());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 //use router
 app.use(router);
 
