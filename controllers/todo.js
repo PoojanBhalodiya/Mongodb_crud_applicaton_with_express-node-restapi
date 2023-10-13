@@ -1,7 +1,13 @@
 const Todo = require("../model/todoModel");
 
 const getTodos = (req, res) => {
-  res.send("I am the get todos route");
+  Todo.find()
+    .then((todos) => {
+      res.json(todos);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 };
 
 const createTodo = (req, res) => {
